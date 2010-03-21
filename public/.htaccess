@@ -1,0 +1,43 @@
+# Sets up ETags
+FileETag MTime Size
+
+# Sets up the mod_rewrite engine
+RewriteEngine on
+
+#RewriteCond %{REQUEST_FILENAME}/$ -f [NC,OR]
+#RewriteCond %{REQUEST_FILENAME}/$ -d [NC]
+#RewriteRule .* - [L]
+
+# Sets the base path (document root)
+RewriteBase /
+
+# Strips the trailing slash
+RewriteRule ^(.+)/$ $1 [R]
+
+#RewriteCond %{HTTP_HOST} ^(admin).thatgirljen.com$ [NC]
+#RewriteRule ^(.*)$ http://thatgirljen.com/admin [R=301,L]
+
+# Strips the preceeding subdomain
+#RewriteCond %{HTTP_HOST} ^(.+).thatgirljen.com$ [NC]
+#RewriteRule ^(.*)$ http://thatgirljen.com/$1 [R=301,L]
+
+# Rewrite Rules for the PICKLES Quaternity
+RewriteRule ^(template/edit)/([a-z-/]+)$        index.php?module=$1&template=$2      [NC,QSA]
+RewriteRule ^(weblog)/([0-9]+)$                 index.php?module=$1&page=$2          [NC,QSA]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule ^([a-z-/]+)/([0-9/]{10})/([a-z-]+)$ index.php?module=$1&date=$2&title=$3 [NC,QSA]
+RewriteRule ^([a-z-/]+)/([0-9]+)$               index.php?module=$1&id=$2            [NC,QSA]
+RewriteRule ^([a-z-/]+)$                        index.php?module=$1                  [NC,QSA]
+
+# Set up the error documents
+ErrorDocument 400 /
+ErrorDocument 401 /
+ErrorDocument 403 /
+ErrorDocument 404 /
+ErrorDocument 500 / 
+
+# Blocks access to .htaccess
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>

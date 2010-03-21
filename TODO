@@ -1,0 +1,9 @@
+ * Port system to run on the LATEST version of PICKLES.
+
+ * Move all hardcoded / site specific values to the config file.
+
+ * Add better spam detection to the check email script.
+
+ * Build set up scripts possibly automatically downloading WordPress.
+
+ * Add Geocoding support.

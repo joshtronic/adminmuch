@@ -1,0 +1,19 @@
+<config>
+	<database>
+		<hostname>localhost</hostname>
+		<username>**********</username>
+		<password>**********</password>
+		<database>parkmuch</database>
+	</database>
+	<modules>
+		<display>Smarty</display>
+	</modules>
+	<templates>
+		<main>index.tpl</main>
+	</templates>
+	<admin>
+		<username>**********</username>
+		<password>********************************</password>
+		<salt>**********</salt>
+	</admin>
+</config>
